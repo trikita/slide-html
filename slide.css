@@ -1,0 +1,28 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Aspect ratio classes for the body tag */
+body { position: absolute; top: 50%; left: 50%; }
+.slide-4x3 { width: 1024px; height: 768px; margin: -384px 0 0 -512px; }
+.slide-16x9 { width: 1024px; height: 576px; margin: -288px 0 0 -512px; }
+.slide-16x10 { width: 1024px; height: 640px; margin: -320px 0 0 -512px; }
+
+#slide { display: none; }
+
+.slide {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+}
+.slide-content {
+	align-self: center;
+}
+.slide {
+	white-space: nowrap;
+}
