@@ -20,6 +20,10 @@ Android implementation can be found [here](https://github.com/trikita/slide).
 	 can edit, save and refresh the browser to see how your presentation looks
 	 like.
 
+## Demo
+
+Either open `slide.html` in your browser or [view it online](http://htmlpreview.github.io/?https://github.com/trikita/slide-html/blob/master/slide.html).
+
 ## Syntax
 
 Slides are separated with a blank line.
@@ -43,6 +47,11 @@ beginning of the line.
 Above the slide contents there is a small style block. You can specify the
 default font, foreground and background colors for your slides. You can also
 customize header, monospace and emphasized font styles.
+
+## Printing
+
+You can print your presentation, in this case the slides will be printed as small thumbnails
+so that you could make notes on paper or use it as a story plan for your speech.
 
 ## Development
 
