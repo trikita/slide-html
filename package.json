@@ -1,0 +1,24 @@
+{
+  "name": "slide",
+  "version": "1.0.0",
+  "description": "Plain text presentation maker",
+  "scripts": {
+    "lint": "jshint src/slide.js",
+    "build": "node build.js > slide.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trikita/slide-html.git"
+  },
+  "author": "Serge Zaitsev <zaitsev.serge@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trikita/slide-html/issues"
+  },
+  "homepage": "https://github.com/trikita/slide-html#readme",
+  "devDependencies": {
+    "cssmin": "^0.4.3",
+    "jshint": "^2.9.2",
+    "jsmin": "^1.0.1"
+  }
+}

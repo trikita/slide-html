@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title>title</title>
+		<style>*{margin:0;padding:0;box-sizing:border-box}#slide{display:none}.slide{white-space:nowrap}.slide-content{align-self:center}@media screen{body{position:absolute;top:50%;left:50%}.slide-4x3{width:1024px;height:768px;margin:-384px 0 0 -512px}.slide-16x9{width:1024px;height:576px;margin:-288px 0 0 -512px}.slide-16x10{width:1024px;height:640px;margin:-320px 0 0 -512px}.slide{position:absolute;width:100%;height:100%;display:flex;justify-content:center;overflow:hidden}}@media print{body{transform:none!important}h1{font-size:1.8rem;line-height:1.5;letter-spacing:-.05rem;font-weight:300}.slide-root{width:100%;display:flex;flex-wrap:wrap;align-items:stretch}.slide-content{transform:none!important}.slide{display:flex;justify-content:center;flex:1;padding:.5rem;margin:.5rem .5rem 4rem .5rem;border:1px solid rgba(0,0,0,0.2);visibility:visible!important}}</style>
+		<script>var INDENT_RE=/^(?:( )+|\t+)/;function trimIndent(s){var indent=(s.match(INDENT_RE)||[]).length;if(indent>0){var trim=s.substring(0,indent+1);return s.replace(new RegExp(trim,'g'),'');}}
+function renderSlide(root,slide){var lines=slide.split('\n');var emSpanStart=-1;var slideWrapper=document.createElement('div');var slideContent=document.createElement('div');var html='';var backgrounds=[];slideWrapper.className='slide';slideContent.className='slide-content';for(var i=0;i<lines.length;i++){var line=lines[i];if(line.startsWith('@')){var elem=document.createElement('textarea');elem.innerHTML=line.substring(1);backgrounds.push(elem.value.replace(/(?:(https?\:\/\/[^\s]+))/,'url($1)'));}else if(line.startsWith('#')){html=html+'<h1>'+line.substring(1)+'</h1>';}else if(line.startsWith('  ')||line.startsWith('\t')){html=html+'<pre>'+line.substring(1)+'</pre>';}else{if(line.startsWith('.')){line=line.substring(1);}
+for(var j=0;j<line.length;j++){var c=line.charAt(j);if(c=='*'){if(emSpanStart==-1){html=html+'<strong>';emSpanStart=html.length;}else{if(emSpanStart!=html.length){html=html+'</strong>';}else{html=html.substring(0,html.length-8)+'*';}
+emSpanStart=-1;}}else{html=html+c;}}
+html=html+'<br/>';}}
+slideContent.innerHTML=html;slideWrapper.appendChild(slideContent);root.appendChild(slideWrapper);var scaleWidth=Math.min(slideWrapper.offsetWidth*0.8/slideContent.offsetWidth);var scaleHeight=Math.min(slideWrapper.offsetHeight*0.8/slideContent.offsetHeight);slideContent.style.transform='scale('+Math.min(scaleWidth,scaleHeight)+')';slideWrapper.style.visibility="hidden";slideWrapper.style.background=backgrounds.join(',');slideWrapper.style.backgroundRepeat='no-repeat';slideWrapper.style.backgroundSize='cover';}
+function render(content){var root=document.createElement('div');root.className='slide-root';document.body.appendChild(root);content=trimIndent(content);var slides=content.split(/[\s+]\n/mg);for(var i=0;i<slides.length;i++){var slide=slides[i].trim();renderSlide(root,slide);}
+return root;}
+function resize(){var w=window.innerWidth;var h=window.innerHeight;var bw=document.body.offsetWidth;var bh=document.body.offsetHeight;var scale=((w/h<bw/bh)?w/bw:h/bh);document.body.style.transform='scale('+scale+')';}
+var currentSlide=-1;function goTo(slideIndex){currentSlide=slideIndex;var slides=document.querySelectorAll('.slide');for(var i=0;i<slides.length;i++){var el=slides[i];if(i==currentSlide){el.style.visibility='';}else{el.style.visibility='hidden';}}}
+function next(){goTo(Math.min(currentSlide+1,document.querySelectorAll('.slide').length-1));}
+function prev(){goTo(Math.max(currentSlide-1,0));}
+window.onload=function(){resize();render(document.getElementById('slide').innerHTML);goTo(0);window.onclick=next;window.onresize=resize;window.onkeydown=function(e){if(e.keyCode==39){next();}else if(e.keyCode==37){prev();}};};</script>
+		<style media="screen">
+			@import url('https://fonts.googleapis.com/css?family=Raleway:400,300&subset=latin,latin-ext');
+			@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic');
+			/* Customize theme: change body, h1, strong, pre or .slide class */
+			body {
+				font-family: 'Raleway', sans-serif;
+				color: #fff;
+				background-color: #000;
+			}
+			.slide pre {
+				font-family: 'Ubuntu Mono';
+			}
+		</style>
+	</head>
+	<body class="slide-16x10">
+		<pre id="slide">
+			# < SLIDE >
+
+			Each paragraph
+			is a slide
+
+			Some text is *bold*
+			Some is not
+			.
+			Blank lines still can be used
+
+			# Headers start with #
+			Text follow the header
+			** List item 1
+			** List item 2
+
+			Code is indented with spaces
+			.
+				int main() {
+				  return 0;
+				}
+			.
+			See?
+
+			That's all!
+		</pre>
+	</body>
+</html>
+
