@@ -22,7 +22,7 @@ function renderSlide(root, slide) {
 		if (line.startsWith('@')) {
 			// Add background
 			var elem = document.createElement('textarea');
-			elem.innerHTML = line.substring(1)
+			elem.innerHTML = line.substring(1);
 			backgrounds.push(elem.value.replace(/(?:(https?\:\/\/[^\s]+))/, 'url($1)'));
 		} else if (line.startsWith('#')) {
 			// Add header
