@@ -14,12 +14,16 @@ function renderSlide(root, slide) {
 	var slideWrapper = document.createElement('div');
 	var slideContent = document.createElement('div');
 	var html = '';
+	var backgrounds = [];
 	slideWrapper.className = 'slide';
 	slideContent.className = 'slide-content';
 	for (var i = 0 ; i < lines.length; i++) {
 		var line = lines[i];
 		if (line.startsWith('@')) {
 			// Add background
+			var elem = document.createElement('textarea');
+			elem.innerHTML = line.substring(1)
+			backgrounds.push(elem.value.replace(/(?:(https?\:\/\/[^\s]+))/, 'url($1)'));
 		} else if (line.startsWith('#')) {
 			// Add header
 			html = html + '<h1>' + line.substring(1) + '</h1>';
@@ -60,10 +64,14 @@ function renderSlide(root, slide) {
 	var scaleHeight = Math.min(slideWrapper.offsetHeight * 0.8 / slideContent.offsetHeight);
 	slideContent.style.transform = 'scale(' + Math.min(scaleWidth, scaleHeight) + ')';
 	slideWrapper.style.visibility = "hidden";
+	slideWrapper.style.background = backgrounds.join(',');
+	slideWrapper.style.backgroundRepeat = 'no-repeat';
+	slideWrapper.style.backgroundSize = 'cover';
 }
 
 function render(content) {
 	var root = document.createElement('div');
+	root.className = 'slide-root';
 	document.body.appendChild(root);
 	content = trimIndent(content);
 	var slides = content.split(/[\s+]\n/mg);
