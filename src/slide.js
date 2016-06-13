@@ -14,17 +14,11 @@ function renderSlide(root, slide, index) {
 	var slideWrapper = document.createElement('div');
 	var slideContent = document.createElement('div');
 	var html = '';
-	var backgrounds = [];
 	slideWrapper.className = 'slide slide-'+index;
 	slideContent.className = 'slide-content';
 	for (var i = 0 ; i < lines.length; i++) {
 		var line = lines[i];
-		if (line.startsWith('@')) {
-			// Add background
-			var elem = document.createElement('textarea');
-			elem.innerHTML = line.substring(1);
-			backgrounds.push(elem.value.replace(/(?:(https?\:\/\/[^\s]+))/, 'url($1)'));
-		} else if (line.startsWith('#')) {
+		if (line.startsWith('#')) {
 			// Add header
 			html = html + '<h1>' + line.substring(1) + '</h1>';
 		} else if (line.startsWith('  ') || line.startsWith('\t')) {
@@ -61,9 +55,6 @@ function renderSlide(root, slide, index) {
 	slideWrapper.appendChild(slideContent);
 	root.appendChild(slideWrapper);
 	slideWrapper.style.visibility = "hidden";
-	slideWrapper.style.background = backgrounds.join(',');
-	slideWrapper.style.backgroundRepeat = 'no-repeat';
-	slideWrapper.style.backgroundSize = 'cover';
 }
 
 function render(content) {
