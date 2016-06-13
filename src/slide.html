@@ -31,28 +31,39 @@
   </head>
   <body class="slide-16x10">
     <pre id="slide">
-      # < SLIDE >
+      #SLIDE
+      Good speech deserves time it takes
+      Save time for speech
+      Leave presentation to *Slide*
 
-      Each paragraph
-      is a slide
+      #Focus on content
+      Learn 7 markup rules
+      to make content look great
 
-      Some text is *bold*
-      Some is not
-      .
-      Blank lines still can be used
+      # #1
+      Each paragraph is a slide
 
-      # Headers start with #
-      Text follow the header
-      ** List item 1
-      ** List item 2
+      # #2
+      Headers start with #
 
-      # Show me the code!
-      .
-        int main() {
-        	return 0;
+      # #3
+      Emphasize *words*
+      surrounding them with **asterisks**
+
+      # #4
+      Indent code with 2 spaces
+        /* Day of week: Sakamoto's algorithm */
+        int dow(int y, int m, int d)
+        {
+          static int t[] = {0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4};
+          y -= m < 3;
+          return (y + y/4 - y/100 + y/400 + t[m-1] + d) % 7;
         }
-      .
-      See?
+
+      # #5
+      Lines starting with a dot
+      disable markup such as
+      headlines, code or blank lines
 
       That's all!
     </pre>
