@@ -92,6 +92,7 @@ var currentSlide = -1;
 
 function goTo(slideIndex) {
 	currentSlide = slideIndex;
+	window.location.hash = slideIndex;
 	var slides = document.querySelectorAll('.slide');
 	for (var i = 0; i < slides.length; i++) {
 		var el = slides[i];
@@ -118,7 +119,7 @@ function prev() {
 window.onload = function() {
 	resize();
 	render(document.getElementById('slide').innerHTML);
-	goTo(0);
+	goTo(window.location.hash.substring(1)||0);
 	window.onclick = next;
 	window.onresize = resize;
 	window.onkeydown = function(e) {
