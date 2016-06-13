@@ -29,7 +29,7 @@ function renderSlide(root, slide, index) {
 			html = html + '<h1>' + line.substring(1) + '</h1>';
 		} else if (line.startsWith('  ') || line.startsWith('\t')) {
 			// Add code
-			html = html + '<pre>' + line.substring(1) + '</pre>';
+			html = html + '<pre>' + line.replace(/^(  )|\t/,'') + '</pre>';
 		} else {
 			// Unquote dot-quoted lines
 			if (line.startsWith('.')) {
