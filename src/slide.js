@@ -8,14 +8,14 @@ function trimIndent(s) {
 	}
 }
 
-function renderSlide(root, slide) {
+function renderSlide(root, slide, index) {
 	var lines = slide.split('\n');
 	var emSpanStart = -1;
 	var slideWrapper = document.createElement('div');
 	var slideContent = document.createElement('div');
 	var html = '';
 	var backgrounds = [];
-	slideWrapper.className = 'slide';
+	slideWrapper.className = 'slide slide-'+index;
 	slideContent.className = 'slide-content';
 	for (var i = 0 ; i < lines.length; i++) {
 		var line = lines[i];
@@ -74,7 +74,7 @@ function render(content) {
 	var slides = content.split(/[\s+]\n/mg);
 	for (var i = 0; i < slides.length; i++) {
 		var slide = slides[i].trim();
-		renderSlide(root, slide);
+		renderSlide(root, slide, i);
 	}
 	return root;
 }
