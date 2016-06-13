@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>title</title>
+    <title>Slide</title>
     <link rel="stylesheet" href="slide.css">
     <script src="slide.js"></script>
     <style media="screen">
@@ -27,9 +27,24 @@
         font-size: 0.6rem;
         line-height: 1.1;
       }
+      .slide-10 h1 { color: #fff; text-shadow: 1px 1px 3px #453029; }
+      .slide-11 {
+        background: url("http://trikita.co/slide/icon.png"), url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/asanoha-400px.png");
+        background-repeat: no-repeat, repeat;
+        background-size: 35%, auto;
+        background-position: bottom right;
+      }
+      .slide-13 .slide-content {
+        background-image: url("http://trikita.co/slide/write_framed.png"),
+          url("http://trikita.co/slide/styles.gif"),
+          url("http://trikita.co/slide/illustrate_framed.png");
+        background-repeat: no-repeat;
+        background-size: 40%, 40%, 40%;
+        background-position: bottom left, bottom center, bottom right;
+      }
     </style>
   </head>
-  <body class="slide-16x10">
+  <body class="slide-16x9">
     <pre id="slide">
       #SLIDE
       Good speech deserves time it takes
@@ -65,7 +80,54 @@
       disable markup such as
       headlines, code or blank lines
 
-      That's all!
+      ↵  = new slide
+      .# = headline
+      ** = emphasize
+      ␣␣ = monospace
+      .. = escape
+
+      # Styling with CSS
+
+      # Selectors
+      ..slide
+      ..slide h1
+      ..slide strong
+      ..slide pre
+      .
+      ..slide-N, where N is slide number
+
+      # Example
+      .
+        .slide-10 h1 {
+          color: #fff;
+          text-shadow: 1px 1px 3px #453029;
+        }
+      .
+
+      # CSS backgrounds
+        .slide-12 {
+          background: url("icon.png"),
+                      url("bg.png");
+          background-repeat: no-repeat, repeat;
+          background-size: 40%, auto;
+          background-position: bottom right;
+        }
+
+
+      # Print mode
+      You can print slide thumbnails
+      to practice your speech
+
+      Slide for Android
+      .
+      .
+      .
+
+      # Links
+      http://trikita.co/slide
+      https://github.com/trikita/slide
+      https://github.com/trikita/slide-html
+      https://play.google.com/store/apps/details?id=trikita.slide
     </pre>
   </body>
 </html>
