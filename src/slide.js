@@ -60,9 +60,6 @@ function renderSlide(root, slide) {
 	slideContent.innerHTML = html;
 	slideWrapper.appendChild(slideContent);
 	root.appendChild(slideWrapper);
-	var scaleWidth = Math.min(slideWrapper.offsetWidth * 0.8 / slideContent.offsetWidth);
-	var scaleHeight = Math.min(slideWrapper.offsetHeight * 0.8 / slideContent.offsetHeight);
-	slideContent.style.transform = 'scale(' + Math.min(scaleWidth, scaleHeight) + ')';
 	slideWrapper.style.visibility = "hidden";
 	slideWrapper.style.background = backgrounds.join(',');
 	slideWrapper.style.backgroundRepeat = 'no-repeat';
@@ -98,6 +95,10 @@ function goTo(slideIndex) {
 	var slides = document.querySelectorAll('.slide');
 	for (var i = 0; i < slides.length; i++) {
 		var el = slides[i];
+		var slide = el.children[0];
+		var scaleWidth = (el.offsetWidth * 0.8 / slide.offsetWidth);
+		var scaleHeight = (el.offsetHeight * 0.8 / slide.offsetHeight);
+		slide.style.transform = 'scale(' + Math.min(scaleWidth, scaleHeight) + ')';
 		if (i == currentSlide) {
 			el.style.visibility = '';
 		} else {
