@@ -1,9 +1,9 @@
 var INDENT_RE = /^(?:( )+|\t+)/;
 
 function trimIndent(s) {
-	var indent = (s.match(INDENT_RE)||[]).length;
+	var indent = (s.match(INDENT_RE)||[''])[0].length;
 	if (indent > 0) {
-		var trim = s.substring(0, indent+1);
+		var trim = s.substring(0, indent);
 		return s.replace(new RegExp(trim, 'g'), '');
 	}
 }
