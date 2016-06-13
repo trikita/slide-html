@@ -19,6 +19,6 @@
   "devDependencies": {
     "cssmin": "^0.4.3",
     "jshint": "^2.9.2",
-    "jsmin": "^1.0.1"
+    "uglify-js": "^2.6.2"
   }
 }
